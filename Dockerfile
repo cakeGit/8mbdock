@@ -3,15 +3,11 @@ FROM node:18-alpine
 
 WORKDIR /video-compressor
 
-# Copy package metadata and install dependencies for the API
-COPY package.json ./package.json
-COPY package-lock.json ./package-lock.json
+# Copy application
+COPY / ./ 
 
 # Install dependencies in the src/api directory
 RUN npm install --production
-
-# Copy application
-COPY / ./ 
 
 # Set default port (can be overridden in docker-compose)
 ENV PORT=3000
