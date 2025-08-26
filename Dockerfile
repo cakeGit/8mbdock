@@ -4,9 +4,9 @@ FROM node:18-alpine
 WORKDIR /video-compressor
 
 # Copy application
-COPY / ./video-compressor
+COPY /video-compressor ./
 
-# Install dependencies in the src/api directory
+# Install dependencies in the current directory
 RUN npm install --production
 
 # Set default port (can be overridden in docker-compose)
