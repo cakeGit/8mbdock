@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 // Add CORS and cross-origin isolation headers - CRITICAL for FFmpeg
 app.use((req, res, next) => {
-  res.setHeader('Cross-Origin-Embedder-Policy', 'credentialless');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -50,7 +50,7 @@ app.get('/ffmpeg-proxy/*', (req, res) => {
 app.use(express.static(path.join(__dirname, 'build'), {
   setHeaders: (res, filePath) => {
     // Ensure all static files also have cross-origin headers
-  res.setHeader('Cross-Origin-Embedder-Policy', 'credentialless');
+    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
     res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
   }
 }));
