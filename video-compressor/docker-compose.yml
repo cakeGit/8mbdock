@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  video-compressor:
+    build: .
+    ports:
+      - "3001:3001"  # Host:Container port mapping
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      # Optional: Mount a config file if you want to override config.json
+      - ./src/config.json:/app/build/static/js/config.json:ro
+    restart: unless-stopped
+    container_name: video-compressor-app
+
+  # Example with different port configuration
+  video-compressor-dev:
+    build: .
+    ports:
+      - "3002:3002"  # Different port
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+    # volumes:
+    #   # Uncomment to mount custom config
+    #   - ./config/custom-config.json:/app/src/config.json:ro
+    restart: unless-stopped
+    container_name: video-compressor-dev
+    profiles:
+      - dev  # Only start this service when using 'dev' profile
+
+networks:
+  default:
+    name: video-compressor-network

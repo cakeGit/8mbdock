@@ -1,0 +1,13 @@
+{
+  "ACCESS_TOKEN": "your-access-token-here",
+  "REQUIRES_ACCESS_TOKEN": false,
+  "MAX_FILE_SIZE_MB": 8,
+  "SUPPORTED_FORMATS": ["mp4", "avi", "mov", "mkv", "webm", "flv", "wmv"],
+  "COMPRESSION_QUALITY": {
+    "HIGH": 28,
+    "MEDIUM": 32,
+    "LOW": 36
+  },
+  "APP_NAME": "Video Compressor",
+  "MAX_UPLOAD_SIZE_MB": 500
+}
