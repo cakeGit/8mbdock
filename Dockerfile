@@ -7,7 +7,7 @@ WORKDIR /video-compressor
 COPY /video-compressor ./
 
 # Install dependencies in the current directory
-RUN npm install --production
+RUN npm config set registry https://registry.npmjs.org/ && npm install --production
 
 # Set default port (can be overridden in docker-compose)
 ENV PORT=3000
