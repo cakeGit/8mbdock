@@ -4,7 +4,7 @@ FROM node:18-alpine
 WORKDIR /video-compressor
 
 # Copy application
-COPY / ./ 
+COPY / ./video-compressor
 
 # Install dependencies in the src/api directory
 RUN npm install --production
