@@ -3,26 +3,15 @@ FROM node:18-alpine
 
 WORKDIR /video-compressor
 
-# Copy package metadata and install dependencies
+# Copy package metadata and install dependencies for the API
 COPY package.json ./package.json
 COPY package-lock.json ./package-lock.json
 
-# Install all dependencies (including devDependencies for build)
-RUN npm ci
+# Install dependencies in the src/api directory
+RUN npm install --production
 
-# Copy application source code
-COPY src ./src
-COPY public ./public
-
-# Build the React application
-RUN npm run build
-
-# Remove devDependencies to reduce image size
-RUN npm prune --production
-
-# Copy server files
-COPY server.js ./server.js
-COPY setup-server.js ./setup-server.js
+# Copy application
+COPY / ./ 
 
 # Set default port (can be overridden in docker-compose)
 ENV PORT=3000
